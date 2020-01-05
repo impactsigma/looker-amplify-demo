@@ -1,0 +1,20 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-looker-amplify-demo-dev-104423-authRole",
+            "UnauthRoleArn": "arn:aws:iam::255826005879:role/amplify-looker-amplify-demo-dev-104423-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::255826005879:role/amplify-looker-amplify-demo-dev-104423-authRole",
+            "Region": "us-west-2",
+            "DeploymentBucketName": "amplify-looker-amplify-demo-dev-104423-deployment",
+            "UnauthRoleName": "amplify-looker-amplify-demo-dev-104423-unauthRole",
+            "StackName": "amplify-looker-amplify-demo-dev-104423",
+            "StackId": "arn:aws:cloudformation:us-west-2:255826005879:stack/amplify-looker-amplify-demo-dev-104423/12494460-2e59-11ea-aefe-06ca8b36c6d4",
+            "AmplifyAppId": "du6f4d8fx30wf"
+        },
+        "categories": {
+            "auth": {
+                "lookeramplifydemobabd880b": {}
+            }
+        }
+    }
+}
