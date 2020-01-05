@@ -1,6 +1,5 @@
 const crypto = require('crypto');
 const querystring = require('querystring');
-const {secret} = require('./looker-secret.json');
 
 function nonce(len) {
     let text = '';
@@ -53,7 +52,7 @@ function created_signed_embed_url(options) {
     string_to_sign += json_user_attributes + '\n';
     string_to_sign += json_access_filters;
 
-    const signature = crypto.createHmac('sha1', secret).update(forceUnicodeEncoding(string_to_sign)).digest('base64').trim();
+    const signature = crypto.createHmac('sha1', LOOKER_EMBED_SECRET).update(forceUnicodeEncoding(string_to_sign)).digest('base64').trim();
 
     // construct query string
     const query_params = {

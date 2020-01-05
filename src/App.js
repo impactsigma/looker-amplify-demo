@@ -23,27 +23,25 @@ function generate(ud) {
 }
 
 class App extends Component {
-    constructor() {
-        super();
-        this.state = {userDataFetched: false};
-    }
     async componentDidMount() {
         try {
-            userData = await Auth.currentAuthenticatedUser({bypassCache: true});
-            this.setState({userDataFetched: true});
+            const user = await Auth.currentAuthenticatedUser({bypassCache: true});
+            await this.setState(prevState => {
+                return {user};
+            });
         } catch (error) {
             console.error(error);
         }
     }
     render() {
-        let url;
-        if (Object.keys(userData).length > 0) {
-            url = generate(userData);
-        } else {
-            url = '';
+        const {state} = this;
+        let url = '';
+        if (state && Object.keys(state).length > 0) {
+            url = generate(state.user);
         }
+
         return (
-            <iframe title="Looker - Look 4" width="1000" height="600" frameborder="0" src={url}></iframe>
+            <iframe title="Looker - Look 4" width="1000" height="600" frameBorder="0" src={url}></iframe>
         );
     }
 }

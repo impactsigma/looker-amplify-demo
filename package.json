@@ -21,7 +21,7 @@
     "webpack-dev-server": "^3.10.1"
   },
   "scripts": {
-    "start": "webpack && webpack-dev-server --mode development",
-    "build": "webpack"
+    "start": "webpack --env.LOOKER_EMBED_SECRET=$LOOKER_EMBED_SECRET && webpack-dev-server --mode development",
+    "build": "webpack --env.LOOKER_EMBED_SECRET=$LOOKER_EMBED_SECRET"
   }
 }
