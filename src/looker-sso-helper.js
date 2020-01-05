@@ -1,5 +1,5 @@
-const crypto = require('crypto');
-const querystring = require('querystring');
+import crypto from 'crypto';
+import querystring from 'querystring';
 
 function nonce(len) {
     let text = '';
