@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "lookeramplifydemobabd880b_identitypool_babd880b",
+    "identityPoolName": "lookeramplifydemofc83d2b0_identitypool_fc83d2b0",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "lookerbabd880b",
-    "userPoolName": "lookeramplifydemobabd880b_userpool_babd880b",
+    "resourceNameTruncated": "lookerfc83d2b0",
+    "userPoolName": "lookeramplifydemofc83d2b0_userpool_fc83d2b0",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -28,9 +28,9 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "lookerbabd880b_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "lookerfc83d2b0_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "resourceName": "lookeramplifydemobabd880b",
+    "resourceName": "lookeramplifydemofc83d2b0",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [

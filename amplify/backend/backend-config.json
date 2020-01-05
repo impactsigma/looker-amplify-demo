@@ -1,6 +1,6 @@
 {
 	"auth": {
-		"lookeramplifydemobabd880b": {
+		"lookeramplifydemofc83d2b0": {
 			"service": "Cognito",
 			"providerPlugin": "awscloudformation",
 			"dependsOn": []

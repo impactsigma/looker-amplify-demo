@@ -1,3 +1,5 @@
+
+
 #amplify
 amplify/\#current-cloud-backend
 amplify/.config/local-*
@@ -12,5 +14,3 @@ awsconfiguration.json
 amplifyconfiguration.json
 amplify-gradle-config.json
 amplifyxc.config
-
-looker-secret.json
