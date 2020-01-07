@@ -40,9 +40,6 @@ module.exports = {
     },
     plugins: [
         new CopyWebpackPlugin(['index.html']),
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.DefinePlugin({
-            LOOKER_EMBED_SECRET: JSON.stringify(process.env.LOOKER_EMBED_SECRET)
-        })
+        new webpack.HotModuleReplacementPlugin()
     ]
 };

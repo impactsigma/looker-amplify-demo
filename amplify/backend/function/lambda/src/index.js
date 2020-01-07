@@ -1,5 +1,15 @@
-import crypto from 'crypto';
-import querystring from 'querystring';
+'use strict';
+
+/* Amplify Params - DO NOT EDIT
+You can access the following resource attributes as environment variables from your Lambda function
+var environment = process.env.ENV
+var region = process.env.REGION
+
+Amplify Params - DO NOT EDIT */
+
+const crypto = require('crypto');
+const querystring = require('querystring');
+const {LOOKER_EMBED_SECRET} = process.env;
 
 function nonce(len) {
     let text = '';
@@ -34,8 +44,8 @@ function created_signed_embed_url(options) {
     const json_force_logout_login = JSON.stringify(options.force_logout_login);
 
     // computed options
-    const json_time = JSON.stringify(Math.floor((new Date()).getTime() / 1000));
-    const json_nonce = JSON.stringify(nonce(24));
+    const json_time = JSON.stringify(Math.floor(Date.now() / 1000));
+    const json_nonce = JSON.stringify(nonce(16));
 
     // compute signature
     let string_to_sign = '';
@@ -75,4 +85,22 @@ function created_signed_embed_url(options) {
     return 'https://' + host + embed_path + '?' + query_string;
 }
 
-export default created_signed_embed_url;
+exports.handler = function (event, context, callback) {
+    try {
+        const {userData} = event;
+        const hour = 60 * 60;
+        const urlData = {
+            embed_url: '/embed/looks/4',
+            session_length: hour,
+            external_user_id: userData.username,
+            permissions: ['access_data', 'see_looks'],
+            models: ['pd_platform'],
+            force_logout_login: true
+        };
+        const embedUrl = created_signed_embed_url(urlData);
+
+        return callback(null, embedUrl);
+    } catch (error) {
+        return callback(error);
+    }
+};
