@@ -87,7 +87,8 @@ function created_signed_embed_url(options) {
 
 exports.handler = function (event, context, callback) {
     try {
-        const {userData} = event;
+        const body = JSON.parse(event.body);
+        const {userData} = body;
         const hour = 60 * 60;
         const urlData = {
             embed_url: '/embed/looks/4',
@@ -99,7 +100,10 @@ exports.handler = function (event, context, callback) {
         };
         const embedUrl = created_signed_embed_url(urlData);
 
-        return callback(null, embedUrl);
+        return callback(null, {
+            statusCode: 200,
+            body: JSON.stringify({embedUrl})
+        });
     } catch (error) {
         return callback(error);
     }

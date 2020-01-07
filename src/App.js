@@ -8,11 +8,10 @@ Amplify.configure(awsconfig);
 class App extends Component {
     async componentDidMount() {
         try {
-            const user = await Auth.currentAuthenticatedUser({bypassCache: true});
+            const userData = await Auth.currentAuthenticatedUser({bypassCache: true});
             const credentials = await Auth.currentCredentials();
-            const url = await API.get('apie5bd5a2a', '/generateEmbedUrl', {
-                headers: {},
-                body: user
+            const {embedUrl} = await API.post('apie5bd5a2a', '/generateEmbedUrl', {
+                body: {userData}
             });
 
             await this.setState(prevState => {

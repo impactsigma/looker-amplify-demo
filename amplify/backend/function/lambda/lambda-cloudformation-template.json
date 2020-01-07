@@ -63,7 +63,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-looker-amplify-demo-dev-112512-deployment",
-					"S3Key": "amplify-builds/lambda-36707031773449525a35-build.zip"
+					"S3Key": "amplify-builds/lambda-336c4c4a4b6a4b393371-build.zip"
 				}
 			}
 		},
