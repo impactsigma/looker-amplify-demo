@@ -24,7 +24,7 @@ frontend:
        - pattern: '**'
          headers:
          - key: 'Access-Control-Allow-Origin'
-           value: '*'
+           value: 'api.amplify-demo.impactsigma.xyz'
          - key: 'Access-Control-Allow-Headers'
            value: 'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'
          - key: 'Access-Control-Allow-Methods'
