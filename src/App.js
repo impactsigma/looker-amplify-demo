@@ -5,23 +5,22 @@ import {withAuthenticator} from 'aws-amplify-react';
 import Amplify, {Auth, API} from 'aws-amplify';
 import awsconfig from './aws-exports';
 
-Amplify.configure(awsconfig);
+Amplify.configure(Object.assign(awsconfig, {
+    API: {
+        endpoints: [
+            {
+                name: 'generateEmbedUrl',
+                endpoint: 'https://api.amplify-demo.impactsigma.xyz'
+            }
+        ]
+    }
+}));
 
 class App extends Component {
     async componentDidMount() {
         try {
             const userData = await Auth.currentAuthenticatedUser({bypassCache: true});
             const credentials = await Auth.currentCredentials();
-
-            global.Amplify = Amplify;
-
-            console.log(await fetch('https://api.impactsigma.xyz/generateEmbedUrl', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({userData})
-            }));
 
             const {embedUrl} = await API.post('generateEmbedUrl', '/generateEmbedUrl', {
                 body: {userData}
