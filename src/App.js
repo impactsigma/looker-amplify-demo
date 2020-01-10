@@ -12,6 +12,17 @@ class App extends Component {
         try {
             const userData = await Auth.currentAuthenticatedUser({bypassCache: true});
             const credentials = await Auth.currentCredentials();
+
+            global.Amplify = Amplify;
+
+            console.log(await fetch('https://api.impactsigma.xyz/generateEmbedUrl', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({userData})
+            }));
+
             const {embedUrl} = await API.post('generateEmbedUrl', '/generateEmbedUrl', {
                 body: {userData}
             });
