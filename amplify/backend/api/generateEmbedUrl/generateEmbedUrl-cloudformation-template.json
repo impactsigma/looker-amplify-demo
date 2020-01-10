@@ -263,7 +263,12 @@
                   "x-amazon-apigateway-integration": {
                     "responses": {
                       "default": {
-                        "statusCode": "200"
+                        "statusCode": "200",
+                        "responseParameters": {
+                          "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
+                          "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                          "method.response.header.Access-Control-Allow-Origin": "'amplify-demo.impactsigma.xyz'"
+                        }
                       }
                     },
                     "uri": {
@@ -368,7 +373,12 @@
                   "x-amazon-apigateway-integration": {
                     "responses": {
                       "default": {
-                        "statusCode": "200"
+                        "statusCode": "200",
+                        "responseParameters": {
+                          "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
+                          "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                          "method.response.header.Access-Control-Allow-Origin": "'amplify-demo.impactsigma.xyz'"
+                        }
                       }
                     },
                     "uri": {
