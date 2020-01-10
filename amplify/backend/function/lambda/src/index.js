@@ -102,6 +102,11 @@ exports.handler = function (event, context, callback) {
 
         return callback(null, {
             statusCode: 200,
+            headers: {
+                'Access-Control-Allow-Origin': 'amplify-demo.impactsigma.xyz',
+                'Access-Control-Allow-Headers': '\'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token\'',
+                'Access-Control-Allow-Methods': 'GET,OPTIONS,POST'
+            },
             body: JSON.stringify({embedUrl})
         });
     } catch (error) {

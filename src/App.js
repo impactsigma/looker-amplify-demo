@@ -15,27 +15,23 @@ Amplify.configure({
         endpoints: [
             {
                 name: 'generateEmbedUrl',
-                endpoint: 'https://api.amplify-demo.impactsigma.xyz',
-                region: 'us-west-2'
+                endpoint: 'https://api.amplify-demo.impactsigma.xyz'
             }
         ]
     }
 });
 
-global.Amplify = Amplify;
-
 class App extends Component {
     async componentDidMount() {
         try {
             const userData = await Auth.currentAuthenticatedUser({bypassCache: true});
-            const credentials = await Auth.currentCredentials();
 
             const {embedUrl} = await API.post('generateEmbedUrl', '/generateEmbedUrl', {
                 body: {userData}
             });
 
             await this.setState(prevState => {
-                return {url};
+                return {embedUrl};
             });
         } catch (error) {
             console.error(error);
@@ -45,7 +41,7 @@ class App extends Component {
         const {state} = this;
 
         return (
-            <iframe title="Looker - Look 4" width="1000" height="600" frameBorder="0" src={state && state.url}></iframe>
+            <iframe title="Looker - Look 4" width="1000" height="600" frameBorder="0" src={state && state.embedUrl}></iframe>
         );
     }
 }
