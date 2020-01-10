@@ -6,13 +6,13 @@
             "privacy": {
                 "private": true,
                 "auth": [
-                    "/GET"
+                    "/POST"
                 ]
             }
         }
     ],
-    "resourceName": "apie5bd5a2a",
-    "apiName": "apie5bd5a2a",
+    "resourceName": "generateEmbedUrl",
+    "apiName": "generateEmbedUrl",
     "functionArns": [
         {
             "lambdaFunction": "lambda"
@@ -33,6 +33,5 @@
                 "Arn"
             ]
         }
-    ],
-    "uuid": "f9422c14"
+    ]
 }

@@ -1,3 +1,5 @@
+'use strict';
+
 import React, {Component} from 'react';
 import {withAuthenticator} from 'aws-amplify-react';
 import Amplify, {Auth, API} from 'aws-amplify';
@@ -10,7 +12,7 @@ class App extends Component {
         try {
             const userData = await Auth.currentAuthenticatedUser({bypassCache: true});
             const credentials = await Auth.currentCredentials();
-            const {embedUrl} = await API.post('apie5bd5a2a', '/generateEmbedUrl', {
+            const {embedUrl} = await API.post('generateEmbedUrl', '/generateEmbedUrl', {
                 body: {userData}
             });
 
