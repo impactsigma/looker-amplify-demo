@@ -511,6 +511,21 @@
 
 
 
+      "ApiBasePathMapping": {
+        "Type" : "AWS::ApiGateway::BasePathMapping",
+        "Properties" : {
+          "DomainName" : {
+            "Ref": "ApiDomain"
+          },
+          "RestApiId" : {
+            "Ref": "generateEmbedUrl"
+          }
+        }
+      },
+
+
+
+
       "ApiDNSEntry": {
         "Type" : "AWS::Route53::RecordSet",
         "Properties" : {
