@@ -3,18 +3,26 @@
 import React, {Component} from 'react';
 import {withAuthenticator} from 'aws-amplify-react';
 import Amplify, {Auth, API} from 'aws-amplify';
-import awsconfig from './aws-exports';
 
-Amplify.configure(Object.assign(awsconfig, {
+Amplify.configure({
+    Auth: {
+        identityPoolId: 'us-west-2:597a5127-f9cd-41cd-9206-9127295329ef',
+        region: 'us-west-2',
+        userPoolId: 'us-west-2_TxWDShdi6',
+        userPoolWebClientId: '19go2htj4c8lqlukvrdi1t6l1o'
+    },
     API: {
         endpoints: [
             {
                 name: 'generateEmbedUrl',
-                endpoint: 'https://api.amplify-demo.impactsigma.xyz'
+                endpoint: 'https://api.amplify-demo.impactsigma.xyz',
+                region: 'us-west-2'
             }
         ]
     }
-}));
+});
+
+global.Amplify = Amplify;
 
 class App extends Component {
     async componentDidMount() {
