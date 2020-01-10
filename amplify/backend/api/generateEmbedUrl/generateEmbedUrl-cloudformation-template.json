@@ -1,7 +1,7 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
     "Description": "API Gateway resource stack creation using Amplify CLI",
-    
+
     "Parameters": {
         "authRoleName": {
             "Type":  "String"
@@ -12,22 +12,22 @@
         "env": {
             "Type": "String"
         },
-    
-    
+
+
           "functionlambdaName": {
             "Type": "String",
             "Default": "functionlambdaName"
           },
-        
-          
+
+
           "functionlambdaArn": {
             "Type": "String",
             "Default": "functionlambdaArn"
           }
-        
-          
-          
-    
+
+
+
+
     },
      "Conditions": {
         "ShouldNotCreateEnvResources": {
@@ -40,7 +40,7 @@
         }
     },
     "Resources": {
-        
+
         "PolicyAPIGWgenerateEmbedUrlauth": {
             "DependsOn": [
               "generateEmbedUrl"
@@ -60,9 +60,9 @@
                       "execute-api:Invoke"
                     ],
                     "Resource": [
-                    
-                    
-                    
+
+
+
                       {
                         "Fn::Join": [
                           "",
@@ -83,10 +83,10 @@
                             {
                               "Fn::If": [
                                 "ShouldNotCreateEnvResources",
-                                "Prod", 
+                                "Prod",
                                 {
                                   "Ref": "env"
-                                } 
+                                }
                               ]
                             },
                               "/POST",
@@ -114,10 +114,10 @@
                             {
                               "Fn::If": [
                                 "ShouldNotCreateEnvResources",
-                                "Prod", 
+                                "Prod",
                                 {
                                   "Ref": "env"
-                                } 
+                                }
                               ]
                             },
                               "/POST",
@@ -125,22 +125,22 @@
                           ]
                         ]
                       }
-                    
-                    
-                    
-                    
-                    
+
+
+
+
+
                     ]
                   }
                 ]
               }
             }
           },
-        
-        
-        
-        
-        
+
+
+
+
+
       "generateEmbedUrl": {
         "Type": "AWS::ApiGateway::RestApi",
         "Properties": {
@@ -178,14 +178,14 @@
                           }
                       ]
                   ]
-                } 
+                }
               ]
             },
             "schemes": [
               "https"
             ],
             "paths": {
-              
+
               "/generateEmbedUrl": {
                 "options": {
                   "consumes": [
@@ -217,7 +217,7 @@
                         "responseParameters": {
                           "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
                           "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
-                          "method.response.header.Access-Control-Allow-Origin": "'*'"
+                          "method.response.header.Access-Control-Allow-Origin": "'amplify-demo.impactsigma.xyz'"
                         }
                       }
                     },
@@ -253,13 +253,13 @@
                       }
                     }
                   },
-                          
+
                     "security": [
                         {
                           "sigv4": []
                         }
                       ],
-                  
+
                   "x-amazon-apigateway-integration": {
                     "responses": {
                       "default": {
@@ -275,12 +275,12 @@
                               "Ref": "AWS::Region"
                             },
                             ":lambda:path/2015-03-31/functions/",
-                            
+
                             {
-                                
+
                                 "Ref": "functionlambdaArn"
                             },
-                            
+
                             "/invocations"
                           ]
                         ]
@@ -322,7 +322,7 @@
                         "responseParameters": {
                           "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
                           "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
-                          "method.response.header.Access-Control-Allow-Origin": "'*'"
+                          "method.response.header.Access-Control-Allow-Origin": "'amplify-demo.impactsigma.xyz'"
                         }
                       }
                     },
@@ -358,13 +358,13 @@
                       }
                     }
                   },
-                          
+
                     "security": [
                         {
                           "sigv4": []
                         }
                       ],
-                  
+
                   "x-amazon-apigateway-integration": {
                     "responses": {
                       "default": {
@@ -380,12 +380,12 @@
                             "Ref": "AWS::Region"
                           },
                           ":lambda:path/2015-03-31/functions/",
-                          
+
                           {
-                            
+
                             "Ref": "functionlambdaArn"
                           },
-                          
+
                           "/invocations"
                         ]
                       ]
@@ -395,8 +395,8 @@
                     "type": "aws_proxy"
                   }
                 }
-              }   
-              
+              }
+
             },
             "securityDefinitions": {
               "sigv4": {
@@ -437,17 +437,17 @@
         }
       },
 
-                  
-        
-        
+
+
+
         "functionlambdaPermissiongenerateEmbedUrl": {
             "Type": "AWS::Lambda::Permission",
             "Properties": {
-                "FunctionName": 
+                "FunctionName":
                     {
                         "Ref":  "functionlambdaName"
                     },
-                    
+
                     "Action": "lambda:InvokeFunction",
                 "Principal": "apigateway.amazonaws.com",
                 "SourceArn": {
@@ -472,9 +472,9 @@
                 }
             }
         },
-        
-        
-        
+
+
+
       "DeploymentAPIGWgenerateEmbedUrl5915b934": {
         "Type": "AWS::ApiGateway::Deployment",
         "Properties": {
@@ -482,10 +482,10 @@
           "StageName": {
             "Fn::If": [
               "ShouldNotCreateEnvResources",
-              "Prod", 
+              "Prod",
               {
                 "Ref": "env"
-              } 
+              }
             ]
           },
           "RestApiId": {
